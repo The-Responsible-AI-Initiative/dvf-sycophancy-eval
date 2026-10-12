@@ -1,6 +1,6 @@
 # Supplementary Materials: Frictionless Validation
 
-This directory contains the raw experimental data, probe configurations, and analysis code associated with the paper "Frictionless Validation: The Effects of AI Sycophancy on the Developing Mind" (AIES 2026). These materials are provided to ensure reproducibility of our findings regarding developmental sycophancy across different AI models and age-calibrated personas.
+This directory contains the raw experimental data, probe configurations, and analysis code associated with the paper "Frictionless Validation: Exploring AI Sycophancy and Developmental Risks" (AIES 2026). These materials are provided to ensure reproducibility of our findings regarding developmental sycophancy across different AI models and age-calibrated personas.
 
 ## Contents
 

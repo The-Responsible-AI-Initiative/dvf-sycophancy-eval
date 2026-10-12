@@ -1,32 +1,31 @@
 """
 Conversation runner for the dvf-sycophancy-eval pipeline (AIES 2026).
 
-"Frictionless Validation: The Effects of AI Sycophancy on the Developing Mind"
+"Frictionless Validation: Exploring AI Sycophancy and Developmental Risks"
 
-Runs simulated conversations between age-calibrated child agents (Claude Haiku)
-and three frontier target models to collect sycophancy scores across two
-dimensions: emotional (S) and framing (F). Epistemic (E) is covered by SYCON
-Bench and is excluded here.
+Per-model variant of runner.py scoped to GPT-5.4-mini as the target model,
+across all three sycophancy dimensions (epistemic, emotional, framing) and
+all three age configurations. Running one model per process makes it easy
+to parallelize collection across providers / retry a single model's cells
+independently.
 
-Experimental design
--------------------
-3 models × 3 age configs × 2 dimensions × 3 runs = 54 conversations total
+Experimental design (this file)
+--------------------------------
+1 model (gpt55) × 3 age configs × 3 dimensions × 3 runs = 27 conversations
 
-Models : gpt55, claude_sonnet, gemini_flash
-Ages   : a1 (7-9), a2 (10-12), a3 (13-17)
-Dims   : S (emotional), F (framing/moral)
-Runs   : 3 per cell
+Ages : a1 (7-9), a2 (10-12), a3 (13-17)
+Dims : E (epistemic), S (emotional), F (framing/moral)
+Runs : 3 per cell
 
 Usage
 -----
-python runner.py            # cost guard → pilot → full run
-python runner.py --dry-run  # print plan without API calls
+python runner_gpt.py            # cost guard → pilot → full run
+python runner_gpt.py --dry-run  # print plan without API calls
 
 Environment variables required
 -------------------------------
-  ANTHROPIC_API_KEY  — agent (Haiku) + Claude Sonnet target
-  OPENAI_API_KEY     — GPT-5.5 target
-  GEMINI_API_KEY     — Gemini Flash target
+  ANTHROPIC_API_KEY  — probe agent (Claude Haiku)
+  OPENAI_API_KEY     — GPT-5.4-mini target
 """
 
 import argparse
@@ -48,7 +47,7 @@ import agents
 # ---------------------------------------------------------------------------
 
 TURNS         = 8
-DIMENSIONS    = ["E", "F"]          # S (emotional) complete; this run covers E and F
+DIMENSIONS    = ["E", "S", "F"]
 AGE_CONFIGS   = ["a1", "a2", "a3"]
 RUNS_PER_CELL = 3
 
@@ -449,12 +448,11 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    print("\nEstimated cost (emotional S dimension, 27 conversations):")
-    print("  GPT-5.5:       ~$4.54  (9 conversations)")
-    print("  Claude Sonnet: ~$2.50  (9 conversations)")
-    print("  Gemini Flash:  ~$0.10  (9 conversations)")
-    print("  Agent (Llama): ~$0.00  (local Ollama)")
-    print("  Total:         ~$7.14")
+    print(f"\nRun plan: GPT-5.4-mini x {len(AGE_CONFIGS)} age config(s) x "
+          f"{len(DIMENSIONS)} dimension(s) x {RUNS_PER_CELL} run(s) = "
+          f"{TOTAL} conversations.")
+    print("  Actual API cost depends on current OpenAI pricing and probe "
+          "length; run with --dry-run first to confirm the plan.")
 
     if not args.dry_run and not args.yes:
         print("\nConfirm run? (yes/no): ", end="", flush=True)

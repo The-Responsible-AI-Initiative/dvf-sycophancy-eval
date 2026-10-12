@@ -35,8 +35,10 @@ AGE_LABELS = {
 }
 
 MODEL_LABELS = {
-    "gpt_55":        "GPT-5.5",
+    "gpt55":         "GPT-5.4-mini",
     "claude_sonnet": "Claude Sonnet 4.6",
+    "gemini_flash":  "Gemini 3.5 Flash",
+    "deepseek":      "DeepSeek V4 Pro",
 }
 
 # Sycophancy dimension labels

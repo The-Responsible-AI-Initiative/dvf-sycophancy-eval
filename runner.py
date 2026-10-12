@@ -1,20 +1,21 @@
 """
 Conversation runner for the dvf-sycophancy-eval pipeline (AIES 2026).
 
-"Frictionless Validation: The Effects of AI Sycophancy on the Developing Mind"
+"Frictionless Validation: Exploring AI Sycophancy and Developmental Risks"
 
-Runs simulated conversations between age-calibrated child agents (Claude Haiku)
-and three frontier target models to collect sycophancy scores across two
-dimensions: emotional (S) and framing (F). Epistemic (E) is covered by SYCON
-Bench and is excluded here.
+Runs simulated conversations between age-calibrated probe agents and four
+frontier target models to collect sycophancy scores across all three
+dimensions (epistemic, emotional, framing). For a single-model run, use
+one of the per-model variants (runner_deepseek.py, runner_gemini.py,
+runner_gpt.py) instead, or edit RUN_MODELS below.
 
 Experimental design
 -------------------
-3 models × 3 age configs × 2 dimensions × 3 runs = 54 conversations total
+4 models × 3 age configs × 3 dimensions × 3 runs = 108 conversations total
 
-Models : gpt55, claude_sonnet, gemini_flash
+Models : gpt55, claude_sonnet, gemini_flash, deepseek
 Ages   : a1 (7-9), a2 (10-12), a3 (13-17)
-Dims   : S (emotional), F (framing/moral)
+Dims   : E (epistemic), S (emotional), F (framing/moral)
 Runs   : 3 per cell
 
 Usage
@@ -24,9 +25,10 @@ python runner.py --dry-run  # print plan without API calls
 
 Environment variables required
 -------------------------------
-  ANTHROPIC_API_KEY  — agent (Haiku) + Claude Sonnet target
-  OPENAI_API_KEY     — GPT-5.5 target
-  GEMINI_API_KEY     — Gemini Flash target
+  ANTHROPIC_API_KEY  — probe agent (Claude Haiku, framing dimension) + Claude Sonnet target
+  OPENAI_API_KEY     — GPT-5.4-mini target
+  GOOGLE_API_KEY     — Gemini 3.5 Flash target
+  DEEPSEEK_API_KEY   — DeepSeek target
 """
 
 import argparse
@@ -48,7 +50,7 @@ import agents
 # ---------------------------------------------------------------------------
 
 TURNS         = 8
-DIMENSIONS    = ["F"]          # This run covers E (epistemic) only
+DIMENSIONS    = ["E", "S", "F"]
 AGE_CONFIGS   = ["a1", "a2", "a3"]
 RUNS_PER_CELL = 3
 
@@ -86,7 +88,7 @@ AGENT_MAP = {
     ("a3", "F"): "AGENT_A3_FRAMING",
 }
 
-RUN_MODELS = ["gemini_flash"]
+RUN_MODELS = list(TARGET_MODELS.keys())
 
 _ROOT       = os.path.dirname(os.path.abspath(__file__))
 RAW_DIR     = os.path.join(_ROOT, "results", "raw")
@@ -462,12 +464,13 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    print("\nEstimated cost (emotional S dimension, 27 conversations):")
-    print("  GPT-5.5:       ~$4.54  (9 conversations)")
-    print("  Claude Sonnet: ~$2.50  (9 conversations)")
-    print("  Gemini Flash:  ~$0.10  (9 conversations)")
-    print("  Agent (Llama): ~$0.00  (local Ollama)")
-    print("  Total:         ~$7.14")
+    print(f"\nRun plan: {len(RUN_MODELS)} model(s) x {len(AGE_CONFIGS)} age "
+          f"config(s) x {len(DIMENSIONS)} dimension(s) x {RUNS_PER_CELL} "
+          f"run(s) = {TOTAL} conversations.")
+    print(f"  Models: {', '.join(RUN_MODELS)}")
+    print("  Actual API cost depends on current provider pricing and probe "
+          "length; run with --dry-run first to confirm the plan before "
+          "spending API budget.")
 
     if not args.dry_run and not args.yes:
         print("\nConfirm run? (yes/no): ", end="", flush=True)

@@ -1,32 +1,31 @@
 """
 Conversation runner for the dvf-sycophancy-eval pipeline (AIES 2026).
 
-"Frictionless Validation: The Effects of AI Sycophancy on the Developing Mind"
+"Frictionless Validation: Exploring AI Sycophancy and Developmental Risks"
 
-Runs simulated conversations between age-calibrated child agents (Claude Haiku)
-and three frontier target models to collect sycophancy scores across two
-dimensions: emotional (S) and framing (F). Epistemic (E) is covered by SYCON
-Bench and is excluded here.
+Per-model variant of runner.py scoped to Gemini 3.5 Flash as the target
+model, across all three sycophancy dimensions (epistemic, emotional,
+framing) and all three age configurations. Running one model per process
+makes it easy to parallelize collection across providers / retry a single
+model's cells independently.
 
-Experimental design
--------------------
-3 models × 3 age configs × 2 dimensions × 3 runs = 54 conversations total
+Experimental design (this file)
+--------------------------------
+1 model (gemini_flash) × 3 age configs × 3 dimensions × 3 runs = 27 conversations
 
-Models : gpt55, claude_sonnet, gemini_flash
-Ages   : a1 (7-9), a2 (10-12), a3 (13-17)
-Dims   : S (emotional), F (framing/moral)
-Runs   : 3 per cell
+Ages : a1 (7-9), a2 (10-12), a3 (13-17)
+Dims : E (epistemic), S (emotional), F (framing/moral)
+Runs : 3 per cell
 
 Usage
 -----
-python runner.py            # cost guard → pilot → full run
-python runner.py --dry-run  # print plan without API calls
+python runner_gemini.py            # cost guard → pilot → full run
+python runner_gemini.py --dry-run  # print plan without API calls
 
 Environment variables required
 -------------------------------
-  ANTHROPIC_API_KEY  — agent (Haiku) + Claude Sonnet target
-  OPENAI_API_KEY     — GPT-5.5 target
-  GOOGLE_API_KEY     — Gemini Flash target
+  ANTHROPIC_API_KEY  — probe agent (Claude Haiku)
+  GOOGLE_API_KEY     — Gemini 3.5 Flash target
 """
 
 import argparse
@@ -508,12 +507,11 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    print("\nEstimated cost (emotional S dimension, 27 conversations):")
-    print("  GPT-5.5:       ~$4.54  (9 conversations)")
-    print("  Claude Sonnet: ~$2.50  (9 conversations)")
-    print("  Gemini Flash:  ~$0.10  (9 conversations)")
-    print("  Agent (Llama): ~$0.00  (local Ollama)")
-    print("  Total:         ~$7.14")
+    print(f"\nRun plan: Gemini 3.5 Flash x {len(AGE_CONFIGS)} age config(s) x "
+          f"{len(DIMENSIONS)} dimension(s) x {RUNS_PER_CELL} run(s) = "
+          f"{TOTAL} conversations.")
+    print("  Actual API cost depends on current Gemini pricing and probe "
+          "length; run with --dry-run first to confirm the plan.")
 
     if not args.dry_run and not args.yes:
         print("\nConfirm run? (yes/no): ", end="", flush=True)
@@ -541,15 +539,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-y_run:
-        run_all(dry_run=True)
-        return
-
-    if not run_pilot(auto_confirm=args.yes):
-        print("Full run aborted.")
-        sys.exit(0)
-
-    run_all()
 
 
 if __name__ == "__main__":

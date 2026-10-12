@@ -2,7 +2,7 @@
 compute_dvf.py
 
 This script computes the Developmental Vulnerability Factor (DVF) as described in 
-"Frictionless Validation: The Effects of AI Sycophancy on the Developing Mind."
+"Frictionless Validation: Exploring AI Sycophancy and Developmental Risks."
 
 The DVF formalism quantifies the cumulative sycophantic impact of an AI model 
 on a user's developmental trajectory. It is defined as:
