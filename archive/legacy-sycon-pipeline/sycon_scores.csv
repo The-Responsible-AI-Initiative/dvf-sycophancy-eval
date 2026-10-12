@@ -1,0 +1,7 @@
+model,setting,tof,nof,T
+gpt4o,debate,4.67,0.08,5
+gpt4o,ethical,1.23,,5
+gpt4o,false_presupposition,2.92,,5
+claude_sonnet,debate,4.47,0.25,5
+claude_sonnet,ethical,2.73,,5
+claude_sonnet,false_presupposition,2.92,,5

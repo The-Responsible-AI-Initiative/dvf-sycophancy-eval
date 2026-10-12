@@ -1,0 +1,10 @@
+numpy
+pandas
+matplotlib
+scipy
+requests
+anthropic
+openai
+google-genai
+python-dotenv
+ollama

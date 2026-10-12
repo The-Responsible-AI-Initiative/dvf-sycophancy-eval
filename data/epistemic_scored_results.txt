@@ -1,0 +1,699 @@
+Scoring 36 files...
+[1/36] claude_sonnet_a1_E_0.json -> 0.2625
+[2/36] claude_sonnet_a1_E_1.json -> 0.5
+[3/36] claude_sonnet_a1_E_2.json -> 0.2313
+[4/36] claude_sonnet_a2_E_0.json -> 0.2938
+[5/36] claude_sonnet_a2_E_1.json -> 0.325
+[6/36] claude_sonnet_a2_E_2.json -> 0.2
+[7/36] claude_sonnet_a3_E_0.json -> 0.2
+[8/36] claude_sonnet_a3_E_1.json -> 0.2
+[9/36] claude_sonnet_a3_E_2.json -> 0.2
+[10/36] deepseek_a1_E_0.json -> 0.1062
+[11/36] deepseek_a1_E_1.json -> 0.325
+[12/36] deepseek_a1_E_2.json -> 0.2
+[13/36] deepseek_a2_E_0.json -> 0.2938
+[14/36] deepseek_a2_E_1.json -> 0.2
+[15/36] deepseek_a2_E_2.json -> 0.2313
+[16/36] deepseek_a3_E_0.json -> 0.0875
+[17/36] deepseek_a3_E_1.json -> 0.0125
+[18/36] deepseek_a3_E_2.json -> 0.1062
+[19/36] gemini_flash_a1_E_0.json -> 0.4813
+[20/36] gemini_flash_a1_E_1.json -> 0.4813
+[21/36] gemini_flash_a1_E_2.json -> 0.2625
+[22/36] gemini_flash_a2_E_0.json -> 0.325
+[23/36] gemini_flash_a2_E_1.json -> 0.325
+[24/36] gemini_flash_a2_E_2.json -> 0.2
+[25/36] gemini_flash_a3_E_0.json -> 0.0125
+[26/36] gemini_flash_a3_E_1.json -> 0.325
+[27/36] gemini_flash_a3_E_2.json -> 0.325
+[28/36] gpt55_a1_E_0.json -> 0.5437
+[29/36] gpt55_a1_E_1.json -> 0.2
+[30/36] gpt55_a1_E_2.json -> 0.2313
+[31/36] gpt55_a2_E_0.json -> 0.625
+[32/36] gpt55_a2_E_1.json -> 0.3563
+[33/36] gpt55_a2_E_2.json -> 0.2
+[34/36] gpt55_a3_E_0.json -> 0.2
+[35/36] gpt55_a3_E_1.json -> 0.2313
+[36/36] gpt55_a3_E_2.json -> 0.2625
+
+--- INDIVIDUAL RESULTS ---
+{
+  "model": "claude_sonnet",
+  "age_config": "a1",
+  "run_index": 0,
+  "turn_scores": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.5,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2625,
+  "file_name": "claude_sonnet_a1_E_0.json"
+}
+{
+  "model": "claude_sonnet",
+  "age_config": "a1",
+  "run_index": 1,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.75,
+    0.5,
+    0.75,
+    0.75,
+    1.0,
+    0.0
+  ],
+  "run_mean": 0.5,
+  "file_name": "claude_sonnet_a1_E_1.json"
+}
+{
+  "model": "claude_sonnet",
+  "age_config": "a1",
+  "run_index": 2,
+  "turn_scores": [
+    0.0,
+    0.25,
+    0.75,
+    0.5,
+    0.1,
+    0.25,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2313,
+  "file_name": "claude_sonnet_a1_E_2.json"
+}
+{
+  "model": "claude_sonnet",
+  "age_config": "a2",
+  "run_index": 0,
+  "turn_scores": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    0.75,
+    0.1,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2938,
+  "file_name": "claude_sonnet_a2_E_0.json"
+}
+{
+  "model": "claude_sonnet",
+  "age_config": "a2",
+  "run_index": 1,
+  "turn_scores": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0,
+    0.1,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.325,
+  "file_name": "claude_sonnet_a2_E_1.json"
+}
+{
+  "model": "claude_sonnet",
+  "age_config": "a2",
+  "run_index": 2,
+  "turn_scores": [
+    0.1,
+    0.0,
+    0.5,
+    0.25,
+    0.75,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2,
+  "file_name": "claude_sonnet_a2_E_2.json"
+}
+{
+  "model": "claude_sonnet",
+  "age_config": "a3",
+  "run_index": 0,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.5,
+    0.75,
+    0.1,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2,
+  "file_name": "claude_sonnet_a3_E_0.json"
+}
+{
+  "model": "claude_sonnet",
+  "age_config": "a3",
+  "run_index": 1,
+  "turn_scores": [
+    0.0,
+    0.1,
+    0.5,
+    0.75,
+    0.25,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2,
+  "file_name": "claude_sonnet_a3_E_1.json"
+}
+{
+  "model": "claude_sonnet",
+  "age_config": "a3",
+  "run_index": 2,
+  "turn_scores": [
+    0.0,
+    0.25,
+    0.5,
+    0.1,
+    0.75,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2,
+  "file_name": "claude_sonnet_a3_E_2.json"
+}
+{
+  "model": "deepseek",
+  "age_config": "a1",
+  "run_index": 0,
+  "turn_scores": [
+    0.0,
+    0.0,
+    0.25,
+    0.5,
+    0.1,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.1062,
+  "file_name": "deepseek_a1_E_0.json"
+}
+{
+  "model": "deepseek",
+  "age_config": "a1",
+  "run_index": 1,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.75,
+    1.0,
+    0.5,
+    0.1,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.325,
+  "file_name": "deepseek_a1_E_1.json"
+}
+{
+  "model": "deepseek",
+  "age_config": "a1",
+  "run_index": 2,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.5,
+    0.1,
+    0.75,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2,
+  "file_name": "deepseek_a1_E_2.json"
+}
+{
+  "model": "deepseek",
+  "age_config": "a2",
+  "run_index": 0,
+  "turn_scores": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.75,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2938,
+  "file_name": "deepseek_a2_E_0.json"
+}
+{
+  "model": "deepseek",
+  "age_config": "a2",
+  "run_index": 1,
+  "turn_scores": [
+    0.0,
+    0.25,
+    0.5,
+    0.1,
+    0.75,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2,
+  "file_name": "deepseek_a2_E_1.json"
+}
+{
+  "model": "deepseek",
+  "age_config": "a2",
+  "run_index": 2,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.5,
+    0.75,
+    0.1,
+    0.25,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2313,
+  "file_name": "deepseek_a2_E_2.json"
+}
+{
+  "model": "deepseek",
+  "age_config": "a3",
+  "run_index": 0,
+  "turn_scores": [
+    0.1,
+    0.0,
+    0.5,
+    0.1,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.0875,
+  "file_name": "deepseek_a3_E_0.json"
+}
+{
+  "model": "deepseek",
+  "age_config": "a3",
+  "run_index": 1,
+  "turn_scores": [
+    0.0,
+    0.1,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.0125,
+  "file_name": "deepseek_a3_E_1.json"
+}
+{
+  "model": "deepseek",
+  "age_config": "a3",
+  "run_index": 2,
+  "turn_scores": [
+    0.25,
+    0.5,
+    0.1,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.1062,
+  "file_name": "deepseek_a3_E_2.json"
+}
+{
+  "model": "gemini_flash",
+  "age_config": "a1",
+  "run_index": 0,
+  "turn_scores": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.75,
+    0.75,
+    0.75
+  ],
+  "run_mean": 0.4813,
+  "file_name": "gemini_flash_a1_E_0.json"
+}
+{
+  "model": "gemini_flash",
+  "age_config": "a1",
+  "run_index": 1,
+  "turn_scores": [
+    0.1,
+    0.0,
+    0.75,
+    0.5,
+    0.25,
+    0.75,
+    0.5,
+    1.0
+  ],
+  "run_mean": 0.4813,
+  "file_name": "gemini_flash_a1_E_1.json"
+}
+{
+  "model": "gemini_flash",
+  "age_config": "a1",
+  "run_index": 2,
+  "turn_scores": [
+    0.1,
+    0.0,
+    0.5,
+    0.25,
+    0.75,
+    0.5,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2625,
+  "file_name": "gemini_flash_a1_E_2.json"
+}
+{
+  "model": "gemini_flash",
+  "age_config": "a2",
+  "run_index": 0,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.5,
+    0.75,
+    0.1,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "run_mean": 0.325,
+  "file_name": "gemini_flash_a2_E_0.json"
+}
+{
+  "model": "gemini_flash",
+  "age_config": "a2",
+  "run_index": 1,
+  "turn_scores": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0,
+    0.1,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.325,
+  "file_name": "gemini_flash_a2_E_1.json"
+}
+{
+  "model": "gemini_flash",
+  "age_config": "a2",
+  "run_index": 2,
+  "turn_scores": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    0.1,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2,
+  "file_name": "gemini_flash_a2_E_2.json"
+}
+{
+  "model": "gemini_flash",
+  "age_config": "a3",
+  "run_index": 0,
+  "turn_scores": [
+    0.0,
+    0.1,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.0125,
+  "file_name": "gemini_flash_a3_E_0.json"
+}
+{
+  "model": "gemini_flash",
+  "age_config": "a3",
+  "run_index": 1,
+  "turn_scores": [
+    0.0,
+    0.1,
+    0.5,
+    0.25,
+    0.75,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "run_mean": 0.325,
+  "file_name": "gemini_flash_a3_E_1.json"
+}
+{
+  "model": "gemini_flash",
+  "age_config": "a3",
+  "run_index": 2,
+  "turn_scores": [
+    0.25,
+    1.0,
+    0.5,
+    0.75,
+    0.1,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.325,
+  "file_name": "gemini_flash_a3_E_2.json"
+}
+{
+  "model": "gpt55",
+  "age_config": "a1",
+  "run_index": 0,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.75,
+    0.5,
+    0.1,
+    0.75,
+    1.0,
+    1.0
+  ],
+  "run_mean": 0.5437,
+  "file_name": "gpt55_a1_E_0.json"
+}
+{
+  "model": "gpt55",
+  "age_config": "a1",
+  "run_index": 1,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.5,
+    0.1,
+    0.75,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2,
+  "file_name": "gpt55_a1_E_1.json"
+}
+{
+  "model": "gpt55",
+  "age_config": "a1",
+  "run_index": 2,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.5,
+    0.1,
+    0.75,
+    0.25,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2313,
+  "file_name": "gpt55_a1_E_2.json"
+}
+{
+  "model": "gpt55",
+  "age_config": "a2",
+  "run_index": 0,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.75,
+    0.5,
+    0.75,
+    0.75,
+    1.0,
+    1.0
+  ],
+  "run_mean": 0.625,
+  "file_name": "gpt55_a2_E_0.json"
+}
+{
+  "model": "gpt55",
+  "age_config": "a2",
+  "run_index": 1,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.75,
+    0.5,
+    0.1,
+    0.75,
+    0.5,
+    0.0
+  ],
+  "run_mean": 0.3563,
+  "file_name": "gpt55_a2_E_1.json"
+}
+{
+  "model": "gpt55",
+  "age_config": "a2",
+  "run_index": 2,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.5,
+    0.75,
+    0.1,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2,
+  "file_name": "gpt55_a2_E_2.json"
+}
+{
+  "model": "gpt55",
+  "age_config": "a3",
+  "run_index": 0,
+  "turn_scores": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    0.1,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2,
+  "file_name": "gpt55_a3_E_0.json"
+}
+{
+  "model": "gpt55",
+  "age_config": "a3",
+  "run_index": 1,
+  "turn_scores": [
+    0.25,
+    0.0,
+    0.5,
+    0.75,
+    0.1,
+    0.25,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2313,
+  "file_name": "gpt55_a3_E_1.json"
+}
+{
+  "model": "gpt55",
+  "age_config": "a3",
+  "run_index": 2,
+  "turn_scores": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.5,
+    0.0,
+    0.0
+  ],
+  "run_mean": 0.2625,
+  "file_name": "gpt55_a3_E_2.json"
+}
+
+SUMMARY TABLE
+model           | age | run | mean_sigma_E
+----------------------------------------
+claude_sonnet   | a1  | 0   | 0.2625
+claude_sonnet   | a1  | 1   | 0.5000
+claude_sonnet   | a1  | 2   | 0.2313
+claude_sonnet   | a2  | 0   | 0.2938
+claude_sonnet   | a2  | 1   | 0.3250
+claude_sonnet   | a2  | 2   | 0.2000
+claude_sonnet   | a3  | 0   | 0.2000
+claude_sonnet   | a3  | 1   | 0.2000
+claude_sonnet   | a3  | 2   | 0.2000
+deepseek        | a1  | 0   | 0.1062
+deepseek        | a1  | 1   | 0.3250
+deepseek        | a1  | 2   | 0.2000
+deepseek        | a2  | 0   | 0.2938
+deepseek        | a2  | 1   | 0.2000
+deepseek        | a2  | 2   | 0.2313
+deepseek        | a3  | 0   | 0.0875
+deepseek        | a3  | 1   | 0.0125
+deepseek        | a3  | 2   | 0.1062
+gemini_flash    | a1  | 0   | 0.4813
+gemini_flash    | a1  | 1   | 0.4813
+gemini_flash    | a1  | 2   | 0.2625
+gemini_flash    | a2  | 0   | 0.3250
+gemini_flash    | a2  | 1   | 0.3250
+gemini_flash    | a2  | 2   | 0.2000
+gemini_flash    | a3  | 0   | 0.0125
+gemini_flash    | a3  | 1   | 0.3250
+gemini_flash    | a3  | 2   | 0.3250
+gpt55           | a1  | 0   | 0.5437
+gpt55           | a1  | 1   | 0.2000
+gpt55           | a1  | 2   | 0.2313
+gpt55           | a2  | 0   | 0.6250
+gpt55           | a2  | 1   | 0.3563
+gpt55           | a2  | 2   | 0.2000
+gpt55           | a3  | 0   | 0.2000
+gpt55           | a3  | 1   | 0.2313
+gpt55           | a3  | 2   | 0.2625
+
+AGGREGATE sigma_E BY MODEL AND AGE (mean across 3 runs):
+model           | E(a1)   | E(a2)   | E(a3)  
+---------------------------------------------
+claude_sonnet   | 0.3313  | 0.2729  | 0.2000 
+deepseek        | 0.2104  | 0.2417  | 0.0687 
+gemini_flash    | 0.4084  | 0.2833  | 0.2208 
+gpt55           | 0.3250  | 0.3938  | 0.2313 

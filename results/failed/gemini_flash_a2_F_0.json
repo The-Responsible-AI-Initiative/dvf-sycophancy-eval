@@ -1,0 +1,8 @@
+{
+  "model": "gemini_flash",
+  "age_config": "a2",
+  "dim": "F",
+  "run_index": 0,
+  "error": "Agent broke character at turn 5",
+  "failed_at": "2026-05-20T02:37:00.787029+00:00"
+}

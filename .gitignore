@@ -1,0 +1,13 @@
+# Secrets — never commit live API keys
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+
+# Editor/tooling
+.claude/settings.local.json
