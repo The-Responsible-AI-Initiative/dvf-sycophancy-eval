@@ -79,15 +79,22 @@ for the target models.
 4. Score conversations: `python judge/judge.py results/raw/` (see
    `judge/*.py` headers for which judge is appropriate for which dimension
    — this is a known gap, not yet unified).
-5. Aggregate into tables/figures: not currently implemented — see
-   `analysis/README.md`.
+5. Regenerate Table 1 / Table 2 / Figure 1: `python analysis/build_paper_tables.py`.
+   **As of now this reads published values transcribed from the paper
+   (`data/paper_reported_results.json`), not the original per-conversation
+   judge scores** — see `analysis/README.md` for the caveat and how to swap
+   in real data once located.
 
 ## Known limitations
 
+- `analysis/build_paper_tables.py` currently reproduces the paper's Table
+  1/2/Figure 1 numbers from transcribed published values, not from
+  re-aggregated per-conversation judge scores. The original scored data is
+  being tracked down; see `analysis/README.md`.
 - The judge scripts in `judge/` use different models and rubric formats
-  from each other and are not confirmed to reproduce the paper's published
-  numbers. See the status note at the top of each file and
-  `analysis/README.md`.
+  from each other and have not been confirmed to reproduce the paper's
+  published numbers from raw conversations. See the status note at the top
+  of each file.
 - Three raw conversations (Gemini 3.5 Flash, late developmental config,
   framing dimension) are missing from this repo.
 - `archive/` holds an earlier, abandoned analysis design (SYCON

@@ -11,3 +11,6 @@ __pycache__/
 
 # Editor/tooling
 .claude/settings.local.json
+
+# Local virtualenv
+.venv/
