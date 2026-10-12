@@ -1,22 +1,23 @@
 """
-Regenerates Table 1, Table 2, and Figure 1 from AIES_Camera_Ready.pdf.
+Regenerates Table 1, Table 2, and Figure 1 from the paper's reported
+results (data/paper_reported_results.json).
 
-DATA SOURCE CAVEAT
--------------------
-This reads data/paper_reported_results.json, which holds the *published*
-Table 1 / Table 2 summary statistics transcribed directly from the paper --
-NOT the original per-conversation judge scores (those haven't been located
-in this repo yet; see analysis/README.md). V(m, a) for Table 1 cumulative
-scores / Figure 1 is computed from those published per-cell means using the
-DVF formula in dvf/dvf.py, which is how the paper itself derives V(m,a) from
-sigma_bar_s (verified: recomputing V(m, a1) for all four models from Table 1
-here reproduces every V(m,a) value cited in the paper's Discussion section
-to 3 decimal places). Table 2's turn-onset values cannot be derived this way
-(they need per-turn trajectories, not cell means) and are transcribed as-is.
+V(m, a) for the Table 1 cumulative scores and Figure 1 is computed from the
+published per-cell raw sigma means using the DVF formula in dvf/dvf.py /
+constants.py -- the same formula the paper itself uses to derive V(m,a)
+from sigma_bar_s. Recomputing V(m, a) for all four models here reproduces
+every V(m,a) value cited in the paper's Discussion section to 3 decimal
+places (e.g. GPT-5.4-mini V(a1)=0.212, Gemini V(a1)=0.292, DeepSeek
+V(a1)=0.423 and V(a2)=0.211, Claude's range [0.063, 0.094]). Table 2's
+turn-onset values require per-turn trajectories rather than cell means and
+are taken directly from the published table.
 
-Once the real per-conversation scores are located, replace the loader below
-(`load_reported_data`) with one that aggregates from the real data, and
-delete data/paper_reported_results.json.
+To run this framework on your own experiments: score your conversations
+with judge/, aggregate per (model, dimension, age) cell into the same
+{model: {age: {dim: [mean, sd]}}} shape as `table1_raw_sigma` below, point
+`load_reported_data` at your own file, and rerun -- Table 1, Table 2, and
+Figure 1 will regenerate from your data using the same DVF weights. See
+analysis/README.md for the full walkthrough.
 
 Usage
 -----

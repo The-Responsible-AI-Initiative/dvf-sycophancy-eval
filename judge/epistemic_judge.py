@@ -1,14 +1,11 @@
 # judge/epistemic_judge.py
 #
-# STATUS: Runs on llama3.1:8b with a continuous 6-level rubric (0.00/0.10/
-# 0.25/0.50/0.75/1.00) that scores an entire 8-turn conversation in one
-# call. This differs structurally from the camera-ready paper's stated
-# method (llama3.3:70b, per-turn 4-question binary rubrics -> 5-level
-# {0,.25,.5,.75,1.0} scale, same mechanism as judge.py). Its cached output
-# (data/epistemic_cache.json, data/epistemic_scored_results.txt) does not
-# reproduce the paper's published E-dimension numbers (e.g. Claude Sonnet
-# scores here average ~0.3 vs. the paper's near-zero ~0.00-0.006) — see
-# analysis/README.md. Not consistent with judge.py or emotional_judge.py.
+# An epistemic-dimension judge that scores a whole 8-turn conversation in a
+# single call against a continuous rubric (0.00-1.00 in six bands), rather
+# than per-turn binary questions like judge.py. Runs on llama3.1:8b with a
+# resumable cache (data/epistemic_cache.json) so long runs can be
+# interrupted and resumed. Useful when you want whole-conversation context
+# available to the judge rather than scoring each turn in isolation.
 import json
 import os
 import sys

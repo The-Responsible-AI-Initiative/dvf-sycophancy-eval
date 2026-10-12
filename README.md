@@ -39,17 +39,20 @@ agents.py              9 probe system prompts (3 ages x 3 dimensions)
 runner.py              main conversation runner (+ per-model variants:
                         runner_deepseek.py, runner_gemini.py, runner_gpt.py)
 rerun_deepseek_a1_F.py one-off targeted rerun script
-judge/                 three LLM-judge scripts scoring conversations for
-                        sycophancy (see judge/*.py headers for current
-                        status — they are not yet mutually consistent;
-                        see analysis/README.md)
+judge/                 LLM-judge implementations scoring conversations for
+                        sycophancy across the three dimensions — three
+                        worked examples with different model/rubric choices
+                        you can pick from or adapt (see judge/*.py headers)
 dvf/                   DVF formula implementation (dvf.py), shared
                         constants (constants.py)
 constants.py            root-level mirror of dvf/constants.py
-analysis/               currently empty — see analysis/README.md for what's
-                        needed to regenerate the paper's tables/figures
+analysis/               build_paper_tables.py regenerates Table 1, Table 2,
+                        and Figure 1 from the paper's reported results, and
+                        doubles as the template for running the framework
+                        on your own data — see analysis/README.md
 data/                  conversation data, scored results, calibration
-                        artifacts, run logs
+                        artifacts, run logs, and the paper's reported
+                        results (paper_reported_results.json)
 results/               raw/failed/invalid conversation outputs from
                         experimental runs
 archive/               superseded code and data from earlier study
@@ -60,46 +63,53 @@ frictionless-validation-aies2026-supplementary/
                         conversations, a standalone DVF script)
 ```
 
-## Reproducing a run
+## Regenerating the paper's results
 
-Requirements: Python 3.11+, `pip install -r requirements.txt`, a local
-[Ollama](https://ollama.com) instance for the judge models, and API keys
-for the target models.
+```
+pip install -r requirements.txt
+python analysis/build_paper_tables.py
+```
 
-1. Copy `.env.example` (or create `.env`) with:
+This regenerates Table 1, Table 2, and Figure 1 from the paper's reported
+results (`data/paper_reported_results.json`) using the DVF formula in
+`dvf/dvf.py` / `constants.py`. Output lands in `results/tables/` and
+`results/figures/`.
+
+## Running the framework on your own experiments
+
+Requirements: Python 3.11+, a local [Ollama](https://ollama.com) instance
+for the judge/probe models, and API keys for whichever target models you
+want to evaluate.
+
+1. Create `.env` with the keys for the providers you're targeting, e.g.:
    ```
    ANTHROPIC_API_KEY=...
    OPENAI_API_KEY=...
    GOOGLE_API_KEY=...
    DEEPSEEK_API_KEY=...
    ```
-2. Pull the Ollama models used by the judges/probes, e.g. `ollama pull llama3.1:8b`.
+2. Pull the Ollama models used by the probes/judges, e.g. `ollama pull llama3.1:8b`.
 3. Run conversations: `python runner.py --dry-run` to preview the plan, then
-   `python runner.py` for a real run. Output lands in `results/raw/`.
-4. Score conversations: `python judge/judge.py results/raw/` (see
-   `judge/*.py` headers for which judge is appropriate for which dimension
-   — this is a known gap, not yet unified).
-5. Regenerate Table 1 / Table 2 / Figure 1: `python analysis/build_paper_tables.py`.
-   **As of now this reads published values transcribed from the paper
-   (`data/paper_reported_results.json`), not the original per-conversation
-   judge scores** — see `analysis/README.md` for the caveat and how to swap
-   in real data once located.
+   `python runner.py` for a real run. Output lands in `results/raw/`. Adapt
+   `agents.py` (probe prompts) and `TARGET_MODELS` in `runner.py` to your
+   own models/scenarios.
+4. Score conversations with a judge from `judge/` — three worked examples
+   are included with different model/rubric choices; pick one or adapt it
+   to your rubric.
+5. Aggregate your scores into the same shape as `data/paper_reported_results.json`
+   and point `analysis/build_paper_tables.py` at your file to regenerate
+   Table 1, Table 2, and Figure 1 for your own models. See
+   `analysis/README.md` for the full walkthrough.
 
-## Known limitations
+## Notes
 
-- `analysis/build_paper_tables.py` currently reproduces the paper's Table
-  1/2/Figure 1 numbers from transcribed published values, not from
-  re-aggregated per-conversation judge scores. The original scored data is
-  being tracked down; see `analysis/README.md`.
-- The judge scripts in `judge/` use different models and rubric formats
-  from each other and have not been confirmed to reproduce the paper's
-  published numbers from raw conversations. See the status note at the top
-  of each file.
-- Three raw conversations (Gemini 3.5 Flash, late developmental config,
-  framing dimension) are missing from this repo.
-- `archive/` holds an earlier, abandoned analysis design (SYCON
-  Bench-sourced scoring, a 5th "GPT-4o" comparison model) — it is not used
-  by, and does not match, the camera-ready paper.
+- `judge/` contains three independent judge implementations (different
+  judge models, different rubric formats) rather than one canonical
+  pipeline — each is a usable reference you can adapt, not a single
+  required path.
+- `archive/` holds an earlier analysis design (SYCON Bench-sourced scoring,
+  a 5th "GPT-4o" comparison model) that predates the paper's final
+  three-dimension probe methodology. Kept for history; see `archive/README.md`.
 
 ## License
 

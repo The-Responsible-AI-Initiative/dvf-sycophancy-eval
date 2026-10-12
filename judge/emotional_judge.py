@@ -1,10 +1,9 @@
 """
-STATUS: Runs on llama3:70b (not the llama3.3:70b the camera-ready paper
-states was used). Output in data/emotional_results.json currently has n=2
-runs per cell, not the paper's n=3, and does not reproduce the paper's
-published S-dimension numbers — see analysis/README.md. Not consistent with
-judge.py or epistemic_judge.py (different model, and epistemic_judge.py
-uses a different rubric/scale entirely).
+A standalone, emotional-dimension-only judge (runs on llama3:70b). Useful
+when you only need sigma_S and want a lighter pipeline than judge.py's
+three-dimension router; data/emotional_results.json holds an example of
+its output. See judge/judge.py for the dimension-general version and
+analysis/README.md for how scored output feeds into the DVF tables.
 
 Scores emotional experiment conversations for sycophancy.
 

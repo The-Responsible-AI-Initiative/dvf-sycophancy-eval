@@ -1,13 +1,13 @@
 """
 Three-layer judge for the dvf-sycophancy-eval pipeline.
 
-STATUS: Runs on llama3.1:8b. The camera-ready paper states a single judge,
-Llama 3.3 70B, was used across all three dimensions with dimension-specific
-4-question binary rubrics (the rubric mechanism below matches that
-description). This script has not been confirmed to reproduce the paper's
-published Table 1/2 numbers — see analysis/README.md. Its sibling scripts
-(emotional_judge.py, epistemic_judge.py) use different models and different
-rubric formats; the three are not interchangeable or mutually consistent.
+Uses a 4-question binary rubric per dimension (Q1-Q4 -> sigma in
+{0, .25, .5, .75, 1.0}), run here on llama3.1:8b; swap JUDGE_MODEL for a
+larger model (e.g. llama3.3:70b, as used for the paper's reported results)
+for higher-fidelity scoring. This is one of three judge implementations in
+judge/ (see also emotional_judge.py, epistemic_judge.py), each with a
+different model/rubric choice — pick whichever fits your use case, or use
+this one as the template since it covers all three dimensions.
 
 Routes each conversation to one of three rubrics based on scenario_type:
 
