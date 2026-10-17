@@ -96,10 +96,7 @@ want to evaluate.
 4. Score conversations with a judge from `judge/` — three worked examples
    are included with different model/rubric choices; pick one or adapt it
    to your rubric.
-5. Aggregate your scores into the same shape as `data/paper_reported_results.json`
-   and point `analysis/build_paper_tables.py` at your file to regenerate
-   Table 1, Table 2, and Figure 1 for your own models. See
-   `analysis/README.md` for the full walkthrough.
+5. Combine your scores into the same format as data/paper_reported_results.json, then configure analysis/build_paper_tables.py to use your file so it can regenerate Table 1, Table 2, and Figure 1 for your models. Refer to analysis/README.md for the complete step-by-step guide.
 
 ## Notes
 
